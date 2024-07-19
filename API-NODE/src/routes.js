@@ -6,6 +6,6 @@ const gayController = require('../src/controllers/GayController');
 
 // ROTAS DO CABARÉ
 
-routes.get('/gay/:id', gayController.GayDa);
+routes.get('/gay/', gayController.GayDa);
 
 module.exports = routes;

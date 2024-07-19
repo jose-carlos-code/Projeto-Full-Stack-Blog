@@ -3,11 +3,11 @@
 //   routes.push('/login');
 // }
 
-import { Router } from "express";
-const express = require('express');
-const app = express();
+"use client";
 
-const routes = Router();
+import axios from 'axios';
+import { useState } from "react";
+
 
 const rotaLogin = () => {
   routes.get('/login', () => {
@@ -16,17 +16,21 @@ const rotaLogin = () => {
  
 }
 
-
-app.use(routes);
-
 export default function Home() {
+
+const [nome, setNome] = useState("");
 
   return (
     <main className="bg-neutral-700 flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="bg-gray-400">HELLO WORLD</h1>
-      <label>NOME:</label>
-      <input placeholder="digite seu nome"></input>
-      <a href="/login" onClick={ rotaLogin() } className="bg-blue-700">LOGIN</a>
+      <form action="/localhost:3001/gay" method='post' class="login">
+        <input type="hidden" value={3}></input>
+        <label>NOME:</label>
+        <input placeholder="digite seu nome" onChange={event => {
+          setNome(event.target.value);
+        }} value={nome}></input> <br></br>
+        <input type="submit" className="bg-black"></input>
+      </form>
     </main>
   );
 }
